@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../style/home.css">
+    </head>
+    <body>
+        <div id="bg"></div>
+        <div id="main-popup">
+            <div id="popup-grid">
+                <h2 class="pt">You need to be over the age <br> of 18 years old to use this <br> website!</h2>
+                <p class="pt">Please answer truthfully!</p>
+                <button onclick="checkAnswer(true)" id="pb">I am over the age of 18</button>
+                <button onclick="checkAnswer(false)" id="pb">I am under the age of 18</button>
+            </div>
+        </div>
+        <div id="main-grid">
+            <div id="nav">
+                <button onclick="window.location.href='home.html'" id="ho">Home</button>
+                <button onclick="window.location.href='FAQ.html'" id="fa">FAQ</button>
+                <button onclick="window.location.href='Contact.html'" id="cc">Contact us!</button>
+                <button onclick="window.location.href='Reviews.html'" id="re">Reviews</button>
+                <button onclick="window.location.href='about.html'" id="au">About us</button>
+            </div>
+            <div id="st">
+                <button onclick="window.location.href='liquor.html'" id="sg">Start generator</button>
+            </div>
+        </div>
+        <script>
+            function checkAnswer(isCorrect) {
+                if (isCorrect) {
+                    document.getElementById('main-popup').style.display = 'none';
+                }
+                else {
+                    window.location.href = "https://www.youtube.com/channel/UCbCmjCuTUZos6Inko4u57UQ"
+                }
+            }
+        </script>
+    </body>
+</html>

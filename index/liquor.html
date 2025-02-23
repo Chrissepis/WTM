@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../style/liquor.css">
+    <title>Liquor Fill In</title>
+  </head>
+  <body>
+    <div id="bg"></div>
+    <div id="main-grid">
+      <div id="nav">
+        <button onclick="window.location.href='home.html'" id="ho">Home</button>
+        <button onclick="window.location.href='FAQ.html'" id="fa">FAQ</button>
+        <button onclick="window.location.href='Contact.html'" id="cc">Contact us!</button>
+        <button onclick="window.location.href='Reviews.html'" id="re">Reviews</button>
+        <button onclick="window.location.href='about.html'" id="au">About us</button>
+      </div>
+      <div id="input-container">
+        <input type="text" id="liquor-input" placeholder="Fill in your liquor and press enter">
+      </div>
+      <ul id="liquor-list"></ul>
+      <button id="next" onclick="window.location.href='Mixer.html'">Next &#8594;</button>
+      
+      <script>
+        let liquorArray = JSON.parse(localStorage.getItem("liquorarray")) || [];
+
+        
+        function updateList() {
+          const list = document.getElementById("liquor-list");
+          list.innerHTML = ""; 
+
+          liquorArray.forEach((liquor, index) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = liquor;
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "X";
+            deleteBtn.style.marginLeft = "auto";
+            deleteBtn.style.marginRight = "3px";
+            deleteBtn.style.cursor = "pointer";
+            deleteBtn.style.backgroundColor = "rgb(169, 50, 50)";
+            deleteBtn.style.border = "0";
+            deleteBtn.style.color = "white";
+            deleteBtn.onclick = function() {
+              removeLiquor(index);
+            };
+
+            listItem.appendChild(deleteBtn);
+            list.appendChild(listItem);
+          });
+        }
+
+        function addLiquor() {
+          const input = document.getElementById("liquor-input");
+          const liquorName = input.value.trim();
+
+          if (liquorName !== "") {
+            liquorArray.push(liquorName); 
+            localStorage.setItem("liquorarray", JSON.stringify(liquorArray)); 
+            input.value = ""; 
+            updateList(); 
+          }
+        }
+        function removeLiquor(index) {
+          liquorArray.splice(index, 1); 
+          localStorage.setItem("liquorarray", JSON.stringify(liquorArray)); 
+          updateList(); 
+        }
+        document.getElementById("liquor-input").addEventListener("keypress", function(event) {
+          if (event.key === "Enter") {
+            addLiquor();
+          }
+        });
+
+        
+        updateList();
+      </script>
+    </div>
+  </body>
+</html>

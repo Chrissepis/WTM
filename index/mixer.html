@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../style/mixer.css">
+    <title>Mixer Fill In</title>
+  </head>
+  <body>
+    <div id="bg"></div>
+    <div id="main-grid">
+      <div id="nav">
+        <button onclick="window.location.href='home.html'" id="ho">Home</button>
+        <button onclick="window.location.href='FAQ.html'" id="fa">FAQ</button>
+        <button onclick="window.location.href='Contact.html'" id="cc">Contact us!</button>
+        <button onclick="window.location.href='Reviews.html'" id="re">Reviews</button>
+        <button onclick="window.location.href='about.html'" id="au">About us</button>
+      </div>
+      <div id="input-container">
+        <input type="text" id="mixer-input" placeholder="Fill in your mixer and press enter">
+      </div>
+      <ul id="mixer-list"></ul>
+      <button id="next" onclick="window.location.href='settings.html'">Next &#8594;</button>
+      
+      <script>
+        let mixerArray = JSON.parse(localStorage.getItem("mixerarray")) || [];
+
+        function updateList() {
+          const list = document.getElementById("mixer-list");
+          list.innerHTML = ""; 
+
+          mixerArray.forEach((mixer, index) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = mixer;
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "X";
+            deleteBtn.style.marginLeft = "auto";
+            deleteBtn.style.marginRight = "3px";
+            deleteBtn.style.cursor = "pointer";
+            deleteBtn.style.backgroundColor = "rgb(114, 33, 135)";
+            deleteBtn.style.border = "0";
+            deleteBtn.style.color = "white";
+            deleteBtn.onclick = function() {
+              removeMixer(index);
+            };
+
+            listItem.appendChild(deleteBtn);
+            list.appendChild(listItem);
+          });
+        }
+
+        function addMixer() {
+          const input = document.getElementById("mixer-input");
+          const mixerName = input.value.trim();
+
+          if (mixerName !== "") {
+            mixerArray.push(mixerName); 
+            localStorage.setItem("mixerarray", JSON.stringify(mixerArray)); 
+            input.value = ""; 
+            updateList(); 
+          }
+        }
+        function removeMixer(index) {
+          mixerArray.splice(index, 1); 
+          localStorage.setItem("mixerarray", JSON.stringify(mixerArray)); 
+          updateList(); 
+        }
+        document.getElementById("mixer-input").addEventListener("keypress", function(event) {
+          if (event.key === "Enter") {
+            addMixer();
+          }
+        });
+
+        updateList();
+      </script>
+    </div>
+  </body>
+</html>

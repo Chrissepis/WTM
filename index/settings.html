@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../style/settings.css">
+    </head>
+    <body>
+        <div id="bg"></div>
+        <div id="main-grid">
+            <div id="nav">
+                <button onclick="window.location.href='home.html'" id="ho">Home</button>
+                <button onclick="window.location.href='FAQ.html'" id="fa">FAQ</button>
+                <button onclick="window.location.href='Contact.html'" id="cc">Contact us!</button>
+                <button onclick="window.location.href='Reviews.html'" id="re">Reviews</button>
+                <button onclick="window.location.href='about.html'" id="au">About us</button>
+            </div>
+            <div id="setbtn">
+                <button onclick="toggleButton(this)" class="settings changebgred" id="ICE">ICE</button>
+                <button onclick="toggleButton(this)" class="settings changebgred" id="STRAW">STRAW</button>
+                <br>
+                <button onclick="toggleButton(this)" class="settings changebgred" id="RM">RANDOM MIX</button>
+            </div>
+            <button id="next" onclick="window.location.href='output.html'">Next &#8594;</button>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                  document.querySelectorAll(".settings").forEach(button => {
+                    const savedColor = localStorage.getItem(button.id);
+                    button.classList.remove("changebgred", "changebggreen");
+                    if (savedColor === "green") {
+                      button.classList.add("changebggreen");
+                    } else {
+                      button.classList.add("changebgred");
+                    }
+                  });
+                });
+                
+                function toggleButton(button) {
+                  if (button.classList.contains("changebgred")) {
+                    button.classList.remove("changebgred");
+                    button.classList.add("changebggreen");
+                    localStorage.setItem(button.id, "green");
+                  } else {
+                    button.classList.remove("changebggreen");
+                    button.classList.add("changebgred");
+                    localStorage.setItem(button.id, "red");
+                  }
+                }
+            </script>             
+    </body>
+</html> 

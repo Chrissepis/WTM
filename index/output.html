@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Creation</title>
+  <link id="sty" rel="stylesheet" href="../style/output.css">
+</head>
+<body>
+  <div id="bg"></div>
+  <div id="main-grid">
+    <div id="nav">
+      <button onclick="window.location.href='home.html'" id="ho">Home</button>
+      <button onclick="window.location.href='FAQ.html'" id="fa">FAQ</button>
+      <button onclick="window.location.href='Contact.html'" id="cc">Contact us!</button>
+      <button onclick="window.location.href='Reviews.html'" id="re">Reviews</button>
+      <button onclick="window.location.href='about.html'" id="au">About us</button>
+    </div>
+    <div id="generation">
+      <p id="output"></p>
+      <p id="ice"></p>
+      <p id="straw"></p>
+      <p id="clickme" onclick="location.reload()">Click me (or press enter) to generate again!</p>
+    </div>
+
+    <script>
+      function ranliq() {
+        const liquorarray = JSON.parse(localStorage.getItem("liquorarray")) || [];
+        return liquorarray.length ? liquorarray[Math.floor(Math.random() * liquorarray.length)] : "a mystery liquor";
+      }
+
+      function ranmix() {
+        const mixerarray = JSON.parse(localStorage.getItem("mixerarray")) || [];
+        return mixerarray.length ? mixerarray[Math.floor(Math.random() * mixerarray.length)] : "a mystery mixer";
+      }
+
+      function ranratio() {
+        const ranmixbg = localStorage.getItem("RM"); 
+        let percent1, percent2;
+
+        if (ranmixbg === "green") {
+          percent1 = Math.floor(Math.random() * 91) + 10;
+          percent2 = 100 - percent1;
+        } else {
+          percent1 = 30;
+          percent2 = 70;
+        }
+
+        return [percent1, percent2];
+      }
+
+      function ranice() {
+        const ranicebg = localStorage.getItem("ICE");
+        let ice;
+
+        if (ranicebg === "green") {
+          ice = Math.floor(Math.random() * 5);
+        } else {
+          ice = 'You don\'t have to use ice!';
+        }
+
+        document.getElementById("ice").innerText = `Ice cube(s): ${ice}`;
+      }
+
+      function ranstraw() {
+        const ranstrawbg = localStorage.getItem("STRAW");
+        let straw;
+
+        if (ranstrawbg === "green") {
+          straw = Math.floor(Math.random() * 5);
+        } else {
+          straw = 'You don\'t have to use a straw!';
+        }
+
+        document.getElementById("straw").innerText = `Straw count: ${straw}`;
+      }
+
+      function output() {
+        const [percent1, percent2] = ranratio();
+        const liquor = ranliq();
+        const mixer = ranmix();
+
+        document.getElementById("output").innerText = 
+          `You have to mix ${percent1}% ${liquor} with ${percent2}% ${mixer}`;
+      }
+      document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                location.reload();
+            }
+        });
+
+      output();
+      ranice();
+      ranstraw();
+    </script>
+  </div>
+</body>
+</html>

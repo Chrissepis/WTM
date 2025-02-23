@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    overflow: hidden;
+  }  
+  #bg {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-image: url(../img/bg1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+}
+#main-grid {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+#nav {
+    display: flex;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+    gap: 20px;
+}
+#nav > button {
+    border: none;
+    color: white;
+    font-size: 18pt;
+    height: 0.84in;
+    width: 1.84in;
+    transition-duration: 0.15s;
+    background-color: darkblue;
+    border-radius: 20px;
+    justify-self: center;
+    align-self: center;
+
+}
+#main-grid > div > button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    transform: scale(1.05);
+}
+
+.socialimg {
+    height: 100px;
+    width: 100px;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; 
+    width: 100%;
+    padding: 20px;
+    top: 200px;
+}
+
+.social {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    transition: flex 0.4s ease-in-out;
+}
+
+.social:hover {
+    flex: 2; 
+}
+
+.social-btn {
+    width: 100px; 
+    height: 400px;
+    border: none;
+    border-radius: 25px;
+    background-color: transparent;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 20px;
+    transition: width 0.4s ease-in-out;
+}
+
+.social:hover .social-btn {
+    width: 170px; 
+}
+
+.socialimg {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social:hover .socialimg {
+    transform: scale(1.1); 
+}
+#X {
+    background-color: black;
+    color: white;
+}
+#ph {
+    background-color: lightgreen;
+}
+#ins {
+    background-color: hotpink;
+}
+#loca {
+    background-color: orange;
+}
+#mail {
+    background-color: rgb(40, 121, 171);
+}
+.social-btn p {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    position: absolute; 
+    top: 30px; 
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.social:hover .social-btn p {
+    opacity: 1;  
+    visibility: visible;
+}
+.social-btn:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+}

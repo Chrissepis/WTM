@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}  
+#bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(../img/bg1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+#main-grid {
+    display: flex;
+    flex-direction: column;
+}
+#nav {
+    display: flex;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+    gap: 20px;
+}
+#nav > button {
+    border: none;
+    color: white;
+    font-size: 18pt;
+    height: 0.84in;
+    width: 1.84in;
+    transition-duration: 0.15s;
+    background-color: darkblue;
+    border-radius: 20px;
+}
+#main-grid > div > button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+#next:hover {
+    cursor: pointer;
+    background: rgba(128, 0, 128, 0.742);
+    transition-duration: 0.15s;
+}
+#nav button:hover {
+    transform: scale(1.05);
+}
+#output, #ice, #straw, #clickme{
+    font-size: x-large;
+    font-weight: bold;
+    position: relative;
+    padding: 1em 2em;
+    color: #f0f0f0;
+    border-radius: 1000px;
+    border: none;
+    background-color: #161a20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#output::after, #ice::after, #straw::after, #clickme::after {
+    content: " ";
+    position: absolute;
+    height: 112%;
+    width: 102%;
+    border-radius: 1000px;
+    background-image: linear-gradient(to bottom right, #008cff, #e100ff);
+    z-index: -1;
+}
+#clickme:hover {
+    cursor: pointer;
+
+}
