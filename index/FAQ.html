@@ -15,46 +15,55 @@
             </div>
             <div class="q-container">
                 <div id="q1">
-                    <p class="question">
+                    <p class="question" onclick="toggleAnswer('a1')">
                         What does the RANDOM MIX button do?
                     </p>
-                    <p class="answer">
+                    <p id="a1" class="answer" style="display:none;">
                         The RANDOM MIX button when enabled will give you a random ratio on how to mix your drink!
                     </p>
                 </div>
                 <div id="q2">
-                    <p class="question">
+                    <p class="question" onclick="toggleAnswer('a2')">
                         Where can I find the reviews of this website?
-
                     </p>
-                    <p class="answer">
+                    <p id="a2" class="answer" style="display:none;">
                         You can find the reviews under the "reviews" tab on the navigation buttons!
                     </p>
                 </div>
                 <div id="q3">
-                    <p class="question">
+                    <p class="question" onclick="toggleAnswer('a3')">
                         I accidentally filled in "Fanta" in my liquor list how can I remove that?
                     </p>
-                    <p class="answer">
+                    <p id="a3" class="answer" style="display:none;">
                         If you have filled in the wrong liquor or mixer you can easily remove it by pressing on the "X" button next to it.
                     </p>
                 </div>
                 <div id="q4">
-                    <p class="question">
+                    <p class="question" onclick="toggleAnswer('a4')">
                         When would I use this website?
                     </p>
-                    <p class="answer">
+                    <p id="a4" class="answer" style="display:none;">
                         "What To Mix" is a website that you can use at your party, when you are out of ideas or when you just want to try something new!
                     </p>
                 </div>
                 <div id="q5">
-                    <p class="question">
+                    <p class="question" onclick="toggleAnswer('a5')">
                         How do I know if I have the right ingredients?
                     </p>
-                    <p class="answer">
+                    <p id="a5" class="answer" style="display:none;">
                         You don't need to be scared about not having the right ingredients! Because you you fill in you liquor and your mixer and "WTM" will make you a delicious (or not!) drink!
                     </p>
                 </div>
             </div>
+            <script>
+                function toggleAnswer(id) {
+                    var answer = document.getElementById(id);
+                    if (answer.style.display === "none") {
+                            answer.style.display = "block";
+                        } else {
+                            answer.style.display = "none";
+                        }
+                    }
+                </script>
     </body>
 </html>
